@@ -1,0 +1,11 @@
+verson: '3.5'
+services:
+ App:
+  image:httpd
+  build:
+   context: .
+   dockerfile: adhochttpd.dockerfile
+  container_name: webserver
+  ports:
+  - "6969:80"
+	
