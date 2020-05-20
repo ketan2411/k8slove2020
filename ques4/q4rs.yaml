@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: adhocketanq4
+ labels:
+    x: test
+spec:
+  selector:
+    matchLabels:
+      adhoc: ketanq4
+  replicas: 3
+  template:
+    metadata:
+     name: rs1
+     labels:
+      adhoc: ketanq4
+    spec:
+      containers:
+      - name: rcpod
+        image: ketan24/may2020q1:v1
+        ports:
+	- containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: Pod
+  name: q4svcketan
+spec:
+  ports:
+    - name: myport
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    adhoc: ketanq4
+  type: LoadBalancer
+
+
