@@ -2,6 +2,7 @@
 #documentation:
 using kubernetes-python client - https://github.com/kubernetes-client/python
 reference: https://github.com/kubernetes-client/python/blob/master/examples/in_cluster_config.py
+			https://medium.com/@antoine_martin/kubernetes-access-the-api-inside-a-pod-eb49af8c8b06
 
 #inside pod-----
 apt install nano 

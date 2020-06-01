@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: multiport
+  name: multiport
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-label
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-label
+    spec:
+      containers:
+      - image: nginx
+        name: basic
+        ports:
+        - name: port80
+          containerPort: 80
+      - image: ub-ssh
+        name: ssh
+        ports:
+        - name: port22
+          containerPort: 22
+ 
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servicename222323
+spec:
+  ports:
+  - name: http
+    port: 80
+  - name: ssh
+    port: 22
+  selector:
+    app: app-label
+  type: LoadBalancer
